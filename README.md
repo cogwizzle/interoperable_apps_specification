@@ -4,36 +4,64 @@
 ## Preface
 This document is meant to be a living document to further the development of interoperable web and desktop applications.  Interoperable applications are applications that have requirements of working with other applications.  RESTful web driven services offer an easy connectivity between applications.  It is not meant to be the spoken word of the programming gods, however it is a series of beliefs and best practices developed over years of experience with desktop, mobile, and web application development.  This document is free to be commited to and improved upon by any individuals looking to deepen the specification.
 
-## Software Design
-This section will outline best practices when designing interoperable software.  This section will go over the layered application approach to software development, how to design effective user interfaces, and how to link multiple applications together.  We will also touch on Design Patterns and Testing.
+### Community of Developers
+We want other developers to contribute to this project and help us make more informed decisions about writing applications.  Join and be a part of this document, but please do so in a respectful way.  We want all developers to feel welcome to contribute ideas here based on merit.  We will not tolerate bad behavior in the community.
+ 
+## Software Development Principles
+Software Development Principles are like moral guidelines for writing software.  Just like your moral compas they are a set of beliefs that guide your behavior.  Staying true to the identity of your software development principles will make the decision making pieces of software much easier.
 
-### Layered Architecture
-The Layered Architecture design approach involves subdividing your software into four different sections.  The presentation layer, the business layer, the persistence layer, and the database layer.  Each of these layers should of a clear Division of Responsibility.  Division of responsibility is a principle that each module or class should have only one responsiblity.  The following example is a good representation of what good layered applications look like.
+### Single Responsibilty / Division of Responsibility
+The single responsibility (or Division of Responsibility principle is about assigning one responsibility over a single part of an application to a class.  When software is written this way it generally results in smaller testable sections of code.  It also makes dependency injection or inversion of control easier as the class is easily placed in either the constructor of another class or in a builder pattern.  Single responsibility also has the benifit of only ever having one reason to change a class and that is that the requirements for that single responsibility changes.
 
-1. Database - MySQL
-2. Persistence - PersonDao class : Data access object for Person entity.
-3. Businesss
-  * Person - Representation of a person.
-  * PersonService - Layer for interacting with person objects.
-4. Presentation Layer - RESTful web API for accessing data.
+### Layered Approach to Software Development
+The layered application design or (Multitier Software Development) is designed around dividing responsibility of an application into a few common layers.  Because of this it is related to the first Single of Responsibility principle.  The most common layers in multilayered applications are Presentation, Application, Business, and Data Access Layer.
 
-Even though the presentaiton layer in this example doesn't have a traditional user interface as the presentation layer it still has clear division of responsiblity at each level of the design.  Each piece in this example has only one responsibility.
+#### Presentation Layer
+The presentation layer is the User Interface.
 
-### User Interfaces
-Division of responsibility is also very important when it comes to designing a user interface.  When building a user interface it is generally a good idea to break down the interface into smaller reusable components.  It is no wonder that libraries like React, RiotJS, Vue, and Angular have taken such a hold with modern JavaScript engineers.  As oposed to the older technologies it is much easier to write small components that are testable and more relaible.  It is still possible to use component based design with older frameworks like jQuery, or even Java Swing.  Using the jQuery example you can use jQuery plugins to add the dynamic flare to your web pages.  And as far as Java Swing allows you to extend the functionality of the base Swing classes in a way that can meet modern component based design.
+#### Application Layer
+The application layer is the service layer of the application.  In RESTful applications this is the controller / router layer of the application.
 
-It should also be noted that your user interface should be completely seperate from your backend.  A new user should be able to create a completely different user interface for you application wihtout the backend ever being able to tell.  This wll allow developers to include data from multiple sources in a user interface that is multi system inclusive.  This is where all of the power of interoperable software applications comes from.
+#### Business Layer
+The business layer is where all of the business / domain logic happens.
 
-### Prefer Design Patterns
-Design patterns are proven solutions to common software development problems.  When designing software it is generally a good idea to use these patterns when applicable.  A new developer working on your project can save time reading through code by learning common design patterns for a given language.  This will increase productivity and allow developers to easily communicate the value of classes.  The pattern also has a proven track record of success.  Always prefer common design patterns where possible and always learn the most common patterns for the languages you work in.
+#### Data Access Layer
+The data access layer is the persistence layer.  It interacts with your database or long term storage mechanisms.  It also handles any logging or caching.
 
-### Test
-This point should go without saying, but in my experience this is still up for debate among some developers.  You should always test your code as completely as possible.  No matter what!  If you were a customer you wouldn't buy a bike that wasn't tested.  If you were a bik manufacturer you wouldn't by a wheel for a bike that wasn't tested.  As a wheel manufacturer you woudn't buy rubber from someone who did not rate the material for making bike wheels.  These principles still apply to software development.  Yes testing is hard.  It takes time, but it also saves time later down the road.  Automated test are the fastest and prefered method for testing.  In the event that this is not possible because of legacy code then I recomend writing a matrix of class dependencies and writing test cases for your application.  Once you have done all of that work move to automated test as soon as possible.  Don't let your customers fall on their face by using your poorly test product.
+### RESTful API Architecture
+RESTful applications are applications that access a service layer through means of hitting RESTful endpoints (or URIs).  The user interface is completely separate from the remainder of the application.  An application should be able to change the entire front end without rewriting a single line of back end code.  The reason that this is important in regards to having applications work together is that the data / service your REST api provides should be able to support one or many different interfaces.  The interfaces are going to vary based on the system your user is trying to design based on one API or a series of differnt APIs.  Using RESTful APIs and a common language like JSON it allows our user to decide how to combine our services together to create unique application experiences.
 
-### Wire it up
-Generally the prefered way to wire applications up is through a RESTful API.  Your front end should talk to one or more RESTful applications and load without the dependency on the data existing.  This will allow you to create unique experiences for you customer using multiple services in one application.  If your front end and back end are completely separate as spoken about before you can write the front end or the back end in the langauge of your choice.  It works in a similar manner to microservices in the sense that the language doesn't matter as the API is the language in which you communicate with the application.  RESTful APIs are our applications common language.
+### Agile Manifesto
+The Agile Manifesto is a very short read that covers some very important principles of 'Agile' software development.  Agile is a buzzword that gets abused in Software Development as a substitution for the word SCRUM or XP.  It really doesn't mean any of those things.  A quick read through the agile manifesto would probably be the best way to really understand what Agile is and it is encouraged that everyone should do this.  http://agilemanifesto.org/
 
-// TODO continue here.
+## Software Development Practices
+Software Development practices are complimentary to your software development principles.  The practices are the embodiment of the software development principles.  They are the behaviors of Software Engineers who respectes the values of good software development principles.  These are some of the tips and tricks to leading a healthy software development lifestyle.
+
+### The Next Developer
+As a software engineer we must be cognicent that software changes.  We have all worked in poorly written spaghetti legacy code that doesn't make sense to us.  It takes hours to read through and hours to debug.  This type of software leaves a really bad taste when you have to work with it.  The Next Developer principle is an attempt to stop the perpetuation of this cycle.  When writing software always try to write both your code and your comments in a way that when the next poor sap comes to this piece of code they can understand with relative ease what is happening in any given function or class.  This means that if you do something weird explain why it was done that way and why it was the best way to sovle the problem.  Don't leave someone else a TODO without an explanation as to why it didn't get done.  TODOs that are left incomplete can make you seem like you don't respect other developers time.  Always try to leave the code with accurate comments by cleaning up prior comments.  Also always update your test and finally always write meaninful and short commit messages.  The next guy who looks at your code may not even be someone else.  It could be you three years down the road.
+
+### Test Driven Development
+Test driven development is a technique used to write software with single responsibility in mind.  TDD you write the test before you write the code.  The next step is to write the code and ensure that all test pass.  Then you refactor the code to make it better and repeat the process.  This is refered to as Red, Green, Refactor.  By doing this you can tell if the domain of what you are currently working with is too complex and if it needs to be split up into multiple classes.  The test also act as a form of documentation for the next developer explaining all of the features and corner cases associated with a class.  TDD is not always possible and really is just a tool for ensuring good software design.  When TDD can't be used always ensure that you write automated test after the fact to ensure your code is performing as expected.
+
+#### When are test complete?
+Test are complete when all cases in the software have been tested.  A good initial indication of this is using a code coverage tool to check and ensure that every line of code in a file is hit.  When lines of code can't be hit that is fine, but understand that with each line of untested code is a potential unpredictable headache later down the road.
+
+#### How to know a test is working?
+To know for sure a test is working you should write the test before any code is written.  Then run the test.  If the test passes even though the code hasn't been implemented you know that you have written a test that can't fail and you should consider reworking it before continuing.
+
+### Comment First
+Comment first is a technique that a Software Developer lays out the funcationality of the section of code they are about to write before they write it.  It is a good way to ensure that you code is documented well and it allows you to plan out and put your thoughts onto paper.  It also has the added benefit during pairing of allowing other people to understand where you are going so they can help guide you through the process of completing a feature.
+
+### Web First
+Web first development is a principle where you design the user interface of your application to work on a mobile device first.  The principle simply states that if the application looks good and works on a mobile device it will scale and work on a desktop computer or tablet no problem.
+
+### Database Design and Effective Data Modeling
+// TODO This section of the document needs extensive research done.  I did not complete this section as I haven't done the research to complete this section.  Any other epxerts in this matter please feel free to contribute or I will spend the time to figure out the best advice I can provide for this section.
+
+### Be Excited to Learn
+Being excited to learn is the biggest advantage a Software Developer can give themselves in this field.  All successful Software Engineers are excited to discover and explore new territory.  This single skill will truely make you an unstoppable force. // TODO Elaborate on this more when motivation is feeling higher.
+
+### RESTful Endpoints Format
+### Component Driven User Interface
 
 ## Wind up
-// TODO write wind up.
