@@ -15,18 +15,16 @@ Software Development Principles should not be treated as though they are written
 ### Agile 
 Agile.  The greatest buzzword of modern software engineering.  It is a word that many people commonly use for a substitute of the word SCRUM.  Sometimes it is a word people use when they want to tell there customer that, well there is no software development process at all.  As a Software Engineer it is important to understand what Agile actually means.  The best and original source of truth for this is the Software Manifesto.  It is short enough I will include it below.
 
-> We are uncovering better ways of developing
-> software by doing it and helping others do it.
-> Through this work we have come to value:
-<br/>
-> Individuals and interactions over processes and tools<br/>
-> Working software over comprehensive documentation<br/>
-> Customer collaboration over contract negotiation<br/>
-> Responding to change over following a plan<br/>
-<br/>
-> That is, while there is value in the items on
-> the right, we value the items on the left more.
-> - agilemanifesto.org
+> We are uncovering better ways of developing<br/>
+> software by doing it and helping others do it.<br/>
+> Through this work we have come to value:<br/><br/>
+> __Individuals and interactions__ over processes and tools<br/>
+> __Working software__ over comprehensive documentation<br/>
+> __Customer collaboration__ over contract negotiation<br/>
+> __Responding to change__ over following a plan<br/><br/>
+> That is, while there is value in the items on<br/>
+> the right, we value the items on the left more.<br/>
+> __agilemanifesto.org__
 
 As a Software Engineer when you say the word Agile, really know what the phrase means.  I think it is important to use an Agile Software methodology that works well for your Software Development Team.  Research many of them to see what Agile method works best for your team.  There are lots of flavors and lots of ideas on how to effectively implment the ideas in the Agile Manifesto.  Let the work of the Agile community make software engineering easier for your team.
 
